@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="5eb97057-515e-471c-a696-32a62d0c38eb" created="3.8.1" activeEnvironment="Default environment" name="REST Project 3" updated="3.8.1 2021-05-25T17:56:21Z" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="b460d23a-4204-426a-a29d-c45c26f5694a" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://www.dneonline.com" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    <con:definitionCache/>
+    <con:endpoints>
+      <con:endpoint>http://www.dneonline.com</con:endpoint>
+    </con:endpoints>
+    <con:resource name="Calculator.asmx" path="/calculator.asmx" id="a98f2258-d93a-4e87-88ce-abf272043c11">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="Calculator.asmx" id="ea76245c-4a3b-4de6-abdf-7f893ae35d3b" method="GET">
+        <con:settings/>
+        <con:parameters/>
+        <con:request name="Request 1" id="da0d0ebf-b88b-4471-ba1b-0709935bfb08" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://www.dneonline.com</con:endpoint>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:testSuite id="99e88784-e22f-483b-930f-5f3605365b38" name="http://www.dneonline.com Test Suite">
+    <con:settings/>
+    <con:runType>SEQUENTIAL</con:runType>
+    <con:testCase id="139232bf-da57-4e04-b184-ee247d46f73a" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="http://www.dneonline.com Test Case 1" searchProperties="true" timeout="0">
+      <con:settings/>
+      <con:testStep type="restrequest" name="Request 1" id="6ce0b0c4-19fd-45ae-a294-45ae3c76e658">
+        <con:settings/>
+        <con:config service="http://www.dneonline.com" resourcePath="/calculator.asmx" methodName="Calculator.asmx" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <con:restRequest name="Request 1" id="da0d0ebf-b88b-4471-ba1b-0709935bfb08" mediaType="application/json">
+            <con:settings/>
+            <con:endpoint>http://www.dneonline.com</con:endpoint>
+            <con:request/>
+            <con:assertion type="Valid HTTP Status Codes" id="3c8f261f-101d-4635-8e9e-3573ec4234b4" name="Valid HTTP Status Codes">
+              <con:settings/>
+              <con:configuration>
+                <codes>200</codes>
+              </con:configuration>
+            </con:assertion>
+            <con:credentials>
+              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+              <con:authType>No Authorization</con:authType>
+            </con:credentials>
+            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+            <con:parameters/>
+          </con:restRequest>
+        </con:config>
+      </con:testStep>
+      <con:properties/>
+      <con:reportParameters/>
+    </con:testCase>
+    <con:properties/>
+    <con:reportParameters/>
+  </con:testSuite>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
+// This code is often used for adding custom authentication to ReadyAPI functional tests
+
+// If hardcoding the token, uncomment and change line 5
+// token = '4567'
+
+// If your token is parameterized in Project level custom property, uncomment line 8
+// token = request.parent.testCase.testSuite.project.getProperty('auth_token').getValue()
+
+// To modify all outgoing calls, remove comments from lines 11 to 16
+// headers = request.requestHeaders
+// if (headers.containsKey('auth_token2') == false) {
+//   headers.put('auth_token2', token)
+//   request.requestHeaders = headers
+// }</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script>// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new java.io.FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new java.io.PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
+  <con:authRepository/>
+  <con:tags/>
+</con:soapui-project>
